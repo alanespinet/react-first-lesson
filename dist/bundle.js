@@ -9477,7 +9477,24 @@ var FirstComponent = React.createClass({
   }
 });
 
+var SayHello = React.createClass({
+  displayName: 'SayHello',
+
+  render: function render() {
+    return React.createElement(
+      'h3',
+      null,
+      'Hello to you, ',
+      props.name,
+      '. Good day '
+    );
+  }
+});
+
+// Render the component in the DOM. With XML
 ReactDOM.render(React.createElement(FirstComponent, null), document.getElementById('app'));
+ReactDOM.render(React.createElement(SayHello, { name: 'Alan' }), document.getElementById('app'));
+ReactDOM.render(React.createElement(SayHello, { name: 'Yeli' }), document.getElementById('app'));
 
 /***/ }),
 /* 82 */
