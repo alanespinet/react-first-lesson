@@ -33,6 +33,38 @@ const SayHelloToSeveral = React.createClass({
   }
 });
 
+
+
+// Component to see the state in action:
+const Shape = React.createClass({
+
+  // sets initial value for state
+  getInitialState: function(){
+    return {
+      shape: "none",
+      sides: 0
+    };
+  },
+
+  // render the component based in state data
+  render: function(){
+    setTimeout(
+      () => { this.setState({ shape: 'triangle', sides: 3 }); },
+      5000
+    );
+
+    return (
+      <div>
+        <p> Shape: { this.state.shape } </p>
+        <p> Sides: { this.state.sides } </p>
+      </div>
+    );
+  }
+
+});
+
+
 // Render the component in the DOM. With XML
 // ReactDOM.render(<FirstComponent />, document.getElementById('app'));
-ReactDOM.render(<SayHelloToSeveral first="Johnas" second="Alice"/>,document.getElementById('app'));
+// ReactDOM.render(<SayHelloToSeveral first="Johnas" second="Alice"/>,document.getElementById('app'));
+ReactDOM.render(<Shape />, document.getElementById('app'));

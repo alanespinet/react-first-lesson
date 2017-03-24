@@ -9477,6 +9477,7 @@ var FirstComponent = React.createClass({
   }
 });
 
+// This component receives data by this props object
 var SayHello = React.createClass({
   displayName: 'SayHello',
 
@@ -9485,16 +9486,29 @@ var SayHello = React.createClass({
       'h3',
       null,
       'Hello to you, ',
-      props.name,
+      this.props.name,
       '. Good day '
     );
   }
 });
 
+// Component to wrap several calls to SayHello:
+var SayHelloToSeveral = React.createClass({
+  displayName: 'SayHelloToSeveral',
+
+  render: function render() {
+    return React.createElement(
+      'div',
+      null,
+      React.createElement(SayHello, { name: this.props.first }),
+      React.createElement(SayHello, { name: this.props.second })
+    );
+  }
+});
+
 // Render the component in the DOM. With XML
-ReactDOM.render(React.createElement(FirstComponent, null), document.getElementById('app'));
-ReactDOM.render(React.createElement(SayHello, { name: 'Alan' }), document.getElementById('app'));
-ReactDOM.render(React.createElement(SayHello, { name: 'Yeli' }), document.getElementById('app'));
+// ReactDOM.render(<FirstComponent />, document.getElementById('app'));
+ReactDOM.render(React.createElement(SayHelloToSeveral, { first: 'Johnas', second: 'Alice' }), document.getElementById('app'));
 
 /***/ }),
 /* 82 */
